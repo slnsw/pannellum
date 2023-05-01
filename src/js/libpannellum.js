@@ -1118,7 +1118,13 @@ function Renderer(container, context) {
         this.y = y;
         // Use tile key if paths need to be looked up in a dictionary, which needs a `tileKey` entry
         var p = typeof path === 'object' ? path.tileKey : path;
-        p = p.replaceAll('%s',side).replaceAll('%l0',level-1).replaceAll('%l',level).replaceAll('%x',x).replaceAll('%y',y);
+        p = p.replaceAll('%s',side)
+            .replaceAll('%l0',level-1)
+            .replaceAll('%l',level)
+            .replaceAll('%x1',x + 1)
+            .replaceAll('%y1',y + 1)
+            .replaceAll('%x',x)
+            .replaceAll('%y',y);
         this.path = typeof path === 'object' ? path[p] : p;
         this.parentPath = parentPath;
     }
