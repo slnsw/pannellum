@@ -373,7 +373,7 @@ function init() {
             var a = document.createElement('a');
             a.href = e.target.src;
             a.textContent = a.href;
-            anError(config.strings.fileAccessError.replace('%s', a.outerHTML));
+            anError(config.strings.fileAccessError.replaceAll('%s', a.outerHTML));
         };
         
         for (i = 0; i < panoImage.length; i++) {
@@ -421,7 +421,7 @@ function init() {
                     var a = document.createElement('a');
                     a.href = p;
                     a.textContent = a.href;
-                    anError(config.strings.fileAccessError.replace('%s', a.outerHTML));
+                    anError(config.strings.fileAccessError.replaceAll('%s', a.outerHTML));
                     return;
                 }
                 var img = this.response;
@@ -1143,7 +1143,7 @@ function onDocumentMouseWheel(event) {
     // Ctrl for zoom
     if (!fullscreenActive && config.mouseZoom == 'ctrl' && !event.ctrlKey) {
         var keyname = navigator.platform.indexOf('Mac') != -1 ? 'control' : 'ctrl';
-        showInteractionMessage(config.strings.ctrlZoomActivate.replace('%s', '<kbd class="pnlm-outline">' + keyname + '</kbd>'));
+        showInteractionMessage(config.strings.ctrlZoomActivate.replaceAll('%s', '<kbd class="pnlm-outline">' + keyname + '</kbd>'));
         return;
     }
     clearInteractionMessage();
@@ -1799,7 +1799,7 @@ function renderInit() {
         if (event.type == 'webgl error' || event.type == 'no webgl') {
             anError();
         } else if (event.type == 'webgl size error') {
-            anError(config.strings.textureSizeError.replace('%s', event.width).replace('%s', event.maxWidth));
+            anError(config.strings.textureSizeError.replaceAll('%s', event.width).replaceAll('%s', event.maxWidth));
         } else {
             anError(config.strings.unknownError);
             throw event;
@@ -2248,7 +2248,7 @@ function processOptions(isPreview) {
                     authorLink.innerHTML = escapeHTML(config[key]);
                     authorText = authorLink.outerHTML;
                 }
-                infoDisplay.author.innerHTML = config.strings.bylineLabel.replace('%s', authorText);
+                infoDisplay.author.innerHTML = config.strings.bylineLabel.replaceAll('%s', authorText);
                 infoDisplay.container.style.display = 'inline';
                 break;
             

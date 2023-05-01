@@ -290,7 +290,7 @@ function Renderer(container, context) {
                 faceImg.onload = onLoad;
                 faceImg.onerror = incLoaded; // ignore missing face to support partial fallback image
                 if (imageType == 'multires') {
-                    faceImg.src = path.replace('%s', fallbackSides[s]) + (image.extension ? '.' + image.extension : '');
+                    faceImg.src = path.replaceAll('%s', fallbackSides[s]) + (image.extension ? '.' + image.extension : '');
                 } else {
                     faceImg.src = image[s].src;
                 }
@@ -1118,7 +1118,7 @@ function Renderer(container, context) {
         this.y = y;
         // Use tile key if paths need to be looked up in a dictionary, which needs a `tileKey` entry
         var p = typeof path === 'object' ? path.tileKey : path;
-        p = p.replace('%s',side).replace('%l0',level-1).replace('%l',level).replace('%x',x).replace('%y',y);
+        p = p.replaceAll('%s',side).replaceAll('%l0',level-1).replaceAll('%l',level).replaceAll('%x',x).replaceAll('%y',y);
         this.path = typeof path === 'object' ? path[p] : p;
         this.parentPath = parentPath;
     }
